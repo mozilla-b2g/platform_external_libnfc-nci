@@ -27,6 +27,8 @@ extern "C"
 
 #define LOG_TAG "NfcAdaptation"
 
+#define NFC_NCI_NXP_PN547_HARDWARE_MODULE_ID "nfc_nci_pn547"
+
 extern "C" void GKI_shutdown();
 extern void resetConfig();
 extern "C" void verify_stack_non_volatile_store ();
@@ -284,7 +286,7 @@ void NfcAdaptation::InitializeHalDeviceContext ()
     mHalEntryFuncs.power_cycle = HalPowerCycle;
     mHalEntryFuncs.get_max_ee = HalGetMaxNfcee;
 
-    ret = hw_get_module (NFC_NCI_HARDWARE_MODULE_ID, &hw_module);
+    ret = hw_get_module (NFC_NCI_NXP_PN547_HARDWARE_MODULE_ID, &hw_module);
     if (ret == 0)
     {
         ret = nfc_nci_open (hw_module, &mHalDeviceContext);
