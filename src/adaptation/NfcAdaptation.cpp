@@ -26,6 +26,7 @@ extern "C"
 #include "config.h"
 
 #define LOG_TAG "NfcAdaptation"
+#define NFC_NCI_NXP_PN54X_HARDWARE_MODULE_ID "nfc_nci.pn54x"
 
 extern "C" void GKI_shutdown();
 extern void resetConfig();
@@ -284,7 +285,7 @@ void NfcAdaptation::InitializeHalDeviceContext ()
     mHalEntryFuncs.power_cycle = HalPowerCycle;
     mHalEntryFuncs.get_max_ee = HalGetMaxNfcee;
 
-    ret = hw_get_module (NFC_NCI_HARDWARE_MODULE_ID, &hw_module);
+    ret = hw_get_module (NFC_NCI_NXP_PN54X_HARDWARE_MODULE_ID, &hw_module);
     if (ret == 0)
     {
         ret = nfc_nci_open (hw_module, &mHalDeviceContext);
